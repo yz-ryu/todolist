@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 작성</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      width: 100%; /* 폼의 너비를 100%로 설정 */
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      text-align: left;
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      max-width: 600px;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+      transition: border 0.3s ease, background-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007bff;
+      background-color: #fff;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 300px;
+      resize: vertical;
+      max-width: 100%; /* 너비가 100%까지 확장 */
+    }
+
+    button {
+      padding: 14px 24px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+      width: 100%;
+      max-width: 600px; /* 최대 너비 설정 */
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+    }
+
+    .back-link:hover {
+      background-color: #388E3C;
+      transform: scale(1.05);
+    }
+
+    /* Mobile responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        max-width: 90%;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>새 블로그 작성</h1>
+  <form action="/main/blogs/create" method="post">
+    <div>
+      <label for="title">제목:</label>
+      <input type="text" id="title" name="title" placeholder="블로그 제목을 입력하세요" required>
+    </div>
+
+    <div>
+      <label for="content">내용:</label>
+      <textarea id="content" name="content" placeholder="블로그 내용을 작성하세요" required></textarea>
+    </div>
+
+    <button type="submit">작성하기</button>
+  </form>
+
+  <a href="/main/blogs/list" class="back-link">블로그 목록으로 돌아가기</a>
+</div>
+</body>
+</html>

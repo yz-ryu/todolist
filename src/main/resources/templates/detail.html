@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 상세</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      margin-bottom: 20px;
+      text-align: left;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .content strong {
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .actions a, .actions button {
+      padding: 10px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .actions a {
+      color: #007bff;
+      background-color: #f4f7fc;
+      border: 1px solid #007bff;
+    }
+
+    .actions a:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .actions button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+    }
+
+    .actions button:hover {
+      background-color: #d32f2f;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .back-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${blog.title}">블로그 제목</h1>
+
+  <div class="content">
+    <p><strong>작성자:</strong> <span th:text="${blog.author.name}">작성자</span></p>
+    <p><strong>작성 시간:</strong> <span th:text="${blog.formattedCreatedAt}">작성 시간</span></p>
+    <p th:text="${blog.content}">블로그 내용</p>
+  </div>
+
+  <div class="actions">
+    <form th:action="@{/main/blogs/list/detail/{id}/delete(id=${blog.id})}" method="post">
+      <button type="submit">삭제하기</button>
+    </form>
+
+    <a th:href="@{/main/blogs/list/detail/{id}/update(id=${blog.id})}">수정하기</a>
+  </div>
+
+  <a href="/main/blogs/list" class="back-link">목록으로 돌아가기</a>
+</div>
+</body>
+</html>

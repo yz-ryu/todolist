@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .message a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .message a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>회원가입</h1>
+
+  <form action="/register" method="POST">
+    <label for="name">이름:</label>
+    <input type="text" id="name" name="name" required placeholder="이름을 입력하세요.">
+
+    <label for="username">아이디:</label>
+    <input type="text" id="username" name="username" required placeholder="아이디를 입력하세요.">
+
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요.">
+
+    <label for="role">권한:</label>
+    <select id="role" name="role" required>
+      <option value="USER">유저</option>
+      <option value="ADMIN">관리자</option>
+    </select>
+
+    <button type="submit">회원가입</button>
+  </form>
+
+  <div class="message">
+    <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
+  </div>
+</div>
+</body>
+</html>

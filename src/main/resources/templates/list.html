@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블로그 목록</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;  /* 버튼을 좌우로 배치 */
+      margin-bottom: 20px;
+    }
+
+    .create-button, .back-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .create-button:hover, .back-button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-button {
+      background-color: #4CAF50;
+    }
+
+    .back-button:hover {
+      background-color: #388E3C;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+
+    .action-links a {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>블로그 목록</h1>
+  <div class="button-container">
+    <a href="/main/blogs/create" class="create-button">새 블로그 작성</a>
+    <a href="/" class="back-button">메인 화면으로 돌아가기</a>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성 시간</th>
+      <th>상세보기</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog : ${blogs}">
+      <td th:text="${blog.title}"></td>
+      <td th:text="${blog.author.name}"></td>
+      <td th:text="${blog.formattedCreatedAt}"></td>
+      <td>
+        <a th:href="@{/main/blogs/list/detail/{id}(id=${blog.id})}" class="action-links">상세보기</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
